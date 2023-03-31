@@ -3,7 +3,9 @@ let path = require('path')
 let fs = require('fs')
 let MongoClient = require('mongodb').MongoClient
 let bodyParser = require('body-parser')
+let cors = require('cors')
 let app = express()
+app.use(cors())
 
 app.use(
   bodyParser.urlencoded({
@@ -23,7 +25,7 @@ app.get('/profile-picture', function (req, res) {
 })
 
 // use when starting application locally
-let mongoUrlLocal = 'mongodb://mongoadmin:secret@localhost:27017'
+let mongoUrlLocal = 'mongodb://mongoadmin:secret@mongodb:27017'
 
 // use when starting application as docker container
 let mongoUrlDocker = 'mongodb://mongoadmin:secret@mongodb'
